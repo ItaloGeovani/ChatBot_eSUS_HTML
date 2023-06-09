@@ -42,11 +42,9 @@ QA_PROMPT = PromptTemplate(template=template, input_variables=["question", "cont
 
 def generate_response(query, chat_history):
     if query:
-        prompt = "Responder em Português:\n"
-        chat_input = prompt + query
         llm = OpenAI(temperature=0, model_name="gpt-3.5-turbo")
         my_qa = ChatVectorDBChain.from_llm(llm, vectordb, return_source_documents=True)
-        result = my_qa({"question": chat_input, "chat_history": chat_history})
+        result = my_qa({"question": query, "chat_history": chat_history})
     return result["answer"]
 
 chat_history = []  # Variável global para armazenar o histórico de conversas
