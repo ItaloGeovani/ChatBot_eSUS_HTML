@@ -1,3 +1,4 @@
+from keywords import keywords  # Importing the list of keywords
 import os
 from flask import Flask, render_template, request, jsonify
 
@@ -45,12 +46,15 @@ def generate_response(query, chat_history):
     if query:
         prompt = "Responder em Português:\n"
         chat_input = prompt + query
-        llm = OpenAI(temperature=0, model_name="gpt-3.5-turbo")
+        llm = OpenAI(temperature=0.7, model_name="gpt-3.5-turbo")
         my_qa = ChatVectorDBChain.from_llm(llm, vectordb, return_source_documents=True)
         with get_openai_callback() as cb:
             result = my_qa({"question": chat_input, "chat_history": chat_history})
             print(cb)
-        #result = my_qa({"question": chat_input, "chat_history": chat_history})
+
+        if any(keyword in result["answer"] for keyword in keywords):
+            return "Desculpe, não encontrei uma resposta para essa pergunta. Tente algo como: Qual é o indicador 1?, Quais são os indicadores do Previne Brasil?, Como calcular o indicador 3?"
+    
     return result["answer"]
 
 chat_history = []  # Variável global para armazenar o histórico de conversas
