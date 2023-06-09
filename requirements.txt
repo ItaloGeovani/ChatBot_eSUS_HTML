@@ -9,5 +9,4 @@ tensorflow tensorflow-hub
 sentencepiece
 elasticsearch
 pillow
-azure-ai-textanalytics
 
