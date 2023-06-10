@@ -1,4 +1,3 @@
-gradio
 openai
 chromadb
 langchain
@@ -8,4 +7,4 @@ tiktoken
 sentencepiece
 elasticsearch
 pillow
-
+flask
