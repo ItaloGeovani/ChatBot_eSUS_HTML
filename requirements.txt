@@ -5,7 +5,6 @@ langchain
 tabulate
 unstructured
 tiktoken
-tensorflow tensorflow-hub
 sentencepiece
 elasticsearch
 pillow
