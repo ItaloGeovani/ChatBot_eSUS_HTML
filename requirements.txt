@@ -8,3 +8,4 @@ sentencepiece
 elasticsearch
 pillow
 flask
+wrapt==1.12.1

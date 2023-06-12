@@ -15,7 +15,7 @@ from langchain.document_loaders import UnstructuredWordDocumentLoader
 from langchain.prompts.prompt import PromptTemplate
 from langchain.callbacks import get_openai_callback
 
-os.environ["OPENAI_API_KEY"] = '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'
+os.environ["OPENAI_API_KEY"] = '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'
 
 app = Flask(__name__)
 
