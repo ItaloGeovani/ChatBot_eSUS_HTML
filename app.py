@@ -14,8 +14,9 @@ from langchain.chains import ChatVectorDBChain
 from langchain.document_loaders import UnstructuredWordDocumentLoader
 from langchain.prompts.prompt import PromptTemplate
 from langchain.callbacks import get_openai_callback
+from dotenv import load_dotenv
 
-os.environ["OPENAI_API_KEY"] = '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'
+load_dotenv()
 
 app = Flask(__name__)
 
@@ -50,7 +51,8 @@ def generate_response(query, chat_history):
     if query:
         prompt = "Responder em Português:\n"
         chat_input = prompt + query
-        llm = OpenAI(temperature=0.7, model_name="gpt-3.5-turbo")
+        llm = OpenAI(temperature=0.7, model_name="gpt-3.5-turbo",
+                     api_key=os.getenv("OPENAI_API_KEY"))
         my_qa = ChatVectorDBChain.from_llm(
             llm, vectordb, return_source_documents=True)
         with get_openai_callback() as cb:
