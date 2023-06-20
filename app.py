@@ -49,7 +49,7 @@ QA_PROMPT = PromptTemplate(template=template, input_variables=[
 
 def generate_response(query, chat_history):
     if query:
-        prompt = "Responder em Português:\n"
+        prompt = "I want you to act as a document that I am having a conversation with. Your name is :AI Assistant. You will provide me with answers from the given info. If the answer is not included, say exactly: Hum, não encontrei uma resposta para a sua pergunta... Tente perguntar sobre os indicadores! and stop after that. Refuse to answer any question not about the info. Never break character."
         chat_input = prompt + query
         llm = OpenAI(temperature=0.7, model_name="gpt-3.5-turbo",
                      api_key=os.getenv("OPENAI_API_KEY"))

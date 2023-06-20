@@ -1,12 +1,6 @@
-openai
 chromadb
-langchain
-tabulate
 unstructured
-tiktoken
-sentencepiece
-elasticsearch
-pillow
 flask
-wrapt==1.12.1
-python-dotenv
+langchain
+openai
+tiktoken
